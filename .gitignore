@@ -1,0 +1,9 @@
+# Ignore macOS system files
+.DS_Store
+
+# Ignore virtual environment directory
+myvenv/
+
+# Ignore specific CSV file (escape special characters if necessary)
+"Monatszahlen_Verkehrsunfälle.csv"
+"Monatszahlen_Verkehrsunf\303\244lle.csv"
