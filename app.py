@@ -16,22 +16,21 @@ def home():
 @app.route('/predict_api',methods=['POST'])
 def predict_api():
 # Get the data from the request
-    data = request.json.get('data')
+    data=[int(x) for x in request.form.values()]
 
     if not data:
         return jsonify({"error": "No data provided"}), 400   
      
-    year = data['year']
-    month = data['month']
+    year = data[0]
+    month = data[1]
     
     input_data = pd.DataFrame({'JAHR': [year], 'MONAT': [month]})
 
     # Make the prediction
-    prediction = xg_model.predict(input_data)[0]
-    prediction = float(prediction)
+    prediction = xg_model.predict(input_data)
+    prediction = int(prediction)
     # Return the prediction as a JSON response
-    return jsonify({'prediction': prediction})
-
+    return render_template("home.html",prediction_text="The prediction is {}".format(prediction))
 
 
 
