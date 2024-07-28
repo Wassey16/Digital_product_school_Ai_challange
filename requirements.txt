@@ -4,3 +4,5 @@ xgboost
 pandas
 matplotlib
 seaborn
+gunicorn
+scikit-learn
