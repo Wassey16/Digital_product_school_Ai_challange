@@ -13,29 +13,42 @@ def home():
     return render_template('home.html')
 
 
-@app.route('/predict_api',methods=['POST'])
+@app.route('/predict_api', methods=['POST'])
 def predict_api():
-# Get the data from the request
-    data=[int(x) for x in request.form.values()]
+    # Check if the request is JSON (API call)
+    if request.is_json:
+        data = request.json.get('data')
+        if not data:
+            return jsonify({"error": "No data provided"}), 400
+        
+        year = data['year']
+        month = data['month']
+        
+        input_data = pd.DataFrame({'JAHR': [year], 'MONAT': [month]})
+        
+        # Make the prediction
+        prediction = xg_model.predict(input_data)[0]
+        prediction = int(prediction)
+        
+        # Return the prediction as a JSON response
+        return jsonify({'prediction': prediction})
+    else:
+        # Otherwise, handle it as form data (Web form)
+        data = [int(x) for x in request.form.values()]
+        if not data:
+            return jsonify({"error": "No data provided"}), 400
+        
+        year = data[0]
+        month = data[1]
+        
+        input_data = pd.DataFrame({'JAHR': [year], 'MONAT': [month]})
+        
+        # Make the prediction
+        prediction = xg_model.predict(input_data)[0]
+        prediction = int(prediction)
+        
+        # Return the prediction in the rendered template
+        return render_template("home.html", prediction_text="The prediction is {}".format(prediction))
 
-    if not data:
-        return jsonify({"error": "No data provided"}), 400   
-     
-    year = data[0]
-    month = data[1]
-    
-    input_data = pd.DataFrame({'JAHR': [year], 'MONAT': [month]})
-
-    # Make the prediction
-    prediction = xg_model.predict(input_data)
-    prediction = int(prediction)
-    # Return the prediction as a JSON response
-    return render_template("home.html",prediction_text="The prediction is {}".format(prediction))
-
-
-
-
-if __name__ == "__main__":
+if __name__ == '__main__':
     app.run(debug=True)
-   
-     
