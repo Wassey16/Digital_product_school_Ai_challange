@@ -48,7 +48,7 @@ def predict_api():
         prediction = int(prediction)
         
         # Return the prediction in the rendered template
-        return render_template("home.html", prediction_text="The prediction is {}".format(prediction))
+        return render_template("home.html", selected_year=year, selected_month=month, prediction_text=prediction)
 
 if __name__ == '__main__':
     app.run(debug=True)
