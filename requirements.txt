@@ -1,8 +1,7 @@
 Flask
-sklearn
+scikit-learn
 xgboost
 pandas
 matplotlib
 seaborn
 gunicorn
-scikit-learn
