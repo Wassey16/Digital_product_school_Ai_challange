@@ -4,7 +4,7 @@
 # Ignore virtual environment directory
 myvenv/
 train_model.py
-xg_model
+
 # Ignore specific CSV file (escape special characters if necessary)
 Monatszahlen_Verkehrsunf\303\244lle.csv
 Monatszahlen_Verkehrsunfälle.csv
