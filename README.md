@@ -1,3 +1,13 @@
+---
+title: Ai Challange
+emoji: 🐠
+colorFrom: purple
+colorTo: red
+sdk: docker
+pinned: false
+license: apache-2.0
+---
+
 
 # Digital Product School AI Challenge
 
@@ -50,7 +60,7 @@ This project focuses on analyzing traffic data, visualizing it, and building pre
     bash
         python app.py
 
-2. Access the application at http://localhost:5000 or visit [Web page](https://wassey-16-ai-challenge.hf.space) to use the deployed version.
+2. Access the application at http://localhost:5000 or visit [Web page](https://wassey-16-ai-challange.hf.space) to use the deployed version.
 
 ### License
 This project is licensed under the Apache License Version 2.0.
