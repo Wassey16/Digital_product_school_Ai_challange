@@ -1,3 +1,14 @@
+---
+title: Ai Challange
+emoji: 🐠
+colorFrom: purple
+colorTo: red
+sdk: docker
+pinned: false
+license: apache-2.0
+---
+
+
 # Digital Product School AI Challenge
 
 ## Project Overview
